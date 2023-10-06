@@ -1,0 +1,46 @@
+/* Step5: */
+
+        .divtask{
+            background-color:dark green;
+        }
+
+        .headertask{
+            background-color:light yellow;
+        }
+
+        .sectiontask{
+            background-color:aqua;
+        }
+
+        .spantask{
+            color:blueviolet;
+        }
+
+        .articletask{
+            background-color:red;
+        }
+
+        .paratask{
+            color:black;
+        }
+
+        .header1task{
+            background-color:light yellow;
+        }
+
+        .section1task{
+            background-color:red;
+        }
+
+        .span1task{
+            background-color: black;
+            color:darkblue;
+        }
+
+        .article1task{
+            background-color:aqua;
+        }
+
+        .para1task{
+            color:blueviolet;
+        } 

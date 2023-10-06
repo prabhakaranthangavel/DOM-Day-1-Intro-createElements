@@ -1,0 +1,410 @@
+Contents:
+
+1.What is DOM?
+
+2.innerHTML vs innerText
+
+3.createElement
+
+4.appendChild vs append
+
+5.setAttribute
+
+*************************************************************************************************************************
+
+1.What is DOM?
+
+===>DOM stands for Document Object Model.
+
+===>It's a Tree Structure.
+
+===>Used to create and manipulate HTML elements dynamically.
+    ஒரு element ஐ dynamic ஆக மாற்றித் தர DOM பயன்படுகிறது.
+    எடுத்துக்காட்டாக index.html ல் div மற்றும் attributes தராமல் நேரடியாக script.js ல் தரலாம்.
+    இதற்கு DOM பயன்படுகிறது.
+
+===>ஒரு element ஐ create செய்ய 
+    modify செய்ய 
+    அதற்கு attribute செய்வதற்கு மற்றும் 
+    அந்த element ஐ get செய்வதற்கு DOM பயன்படுகிறது.
+
+*************************************************************************************************************************
+
+2.innerHTML vs innerText
+
+Difference between innerHTML and innerText
+
+===>இரண்டுமே ஒரு tag க்குள் content ஐ create செய்ய பயன்படுத்தும் keyword ஆகும். 
+
+===>innerHTML ல் ஒரு content க்குள் ஒரு tag ஐ உருவாக்கலாம்.
+    இதனை nested elements என்று கூறுவோம்.
+    Example:
+            a.innerHTML = "<p> I'm Prabhakaran </p>"
+
+===>ஆனால் innerText ல் மேற்கண்டவாறு கொடுக்க முடியாது.
+    வெறும் text ஐ மட்டுமே கொடுக்க இயலும்.
+    ஒருவேளை tag ஐ கொடுத்தால் அதோடு சேர்த்து தான் output ஐ காட்டும்.
+    Example 1:
+            a.innerText = "I'm Prabhakaran"
+
+    Example 2:
+            a.innerText = "<p> I'm Prabhakaran </p>"      // <p> I'm Prabhakaran </p> 
+
+*************************************************************************************************************************
+
+3.Element ஐ create செய்து output காண:
+
+===>அதற்கான வழிகள்:
+
+    step 1: ஒரு element ஐ create செய்ய document.createElement என்ற key ஐ பயன்படுத்துவோம்.
+
+    ===>Syntax:
+    var/let/const variablename = document.createElement("tagname")
+
+    ===>Example:
+
+        const a = document.createElement("div")
+
+        <div></div>இதுபோல் create ஆகிறது என்று அர்த்தம்.
+
+
+    step 2: create செய்த ஒரு tag க்கு content ஐ கொடுக்க innerHTML என்ற key ஐ பயன்படுத்துவோம்.
+
+    ===>Syntax:
+        variablename.innerHTML = "user content"
+
+    ===>Example:
+
+        a.innerHTML = "I'm Prabhakaran"
+
+        <div>I'm Prabhakaran</div>இதுபோல் create ஆகிறது என்று அர்த்தம்.
+
+
+    step 3: create செய்த ஒரு tag + content ஐ body section க்குள் insert செய்ய document.body.append என்ற key ஐ பயன்படுத்துவோம்.
+
+    ===>Syntax:
+        document.body.append(variablename)
+
+    ===>Example:
+
+        document.body.append(a)
+
+        <body>
+            <div>I'm Prabhakaran</div>
+        </body>   இதுபோல் create ஆகிறது என்று அர்த்தம்.
+
+
+===>Summary:
+
+        Step1:
+            const a = document.createElement("div")
+        Step2:
+            a.innerHTML = "I'm Prabhakaran"
+        Step3:
+            document.body.append(variablename)
+
+        <body>
+            <div>I'm Prabhakaran</div>
+        </body>
+
+    output ல் I'm Prabhakaran என்று வந்துவிடும்.
+    console ல் நாம் create செய்த div வந்துவிடும்.
+
+            ***************************************************************** 
+
+Session Practice Task 1:Create Single Element
+
+1.Create div tag
+2.Inside div tag to span tag
+3.Content:This is a dynamic span tag
+
+        Step1:
+            const element = document.createElement("div")
+        Step2:
+            a.innerHTML = "<span>This is a dynamic span tag</span>"
+        Step3:
+            document.body.append(element)
+
+        <body>
+            <div>
+                <span>I'm Prabhakaran</span>
+            </div>
+        </body>
+
+            ***************************************************************** 
+
+Create and append two or more elements:
+இரண்டு அல்லது அதற்கு மேற்பட்ட tag + elements ஐ create செய்து append செய்ய:
+
+===>Example:
+
+    <body>
+        <div> (ele1)
+
+            <div> (ele2)
+                <span>Create and append two or more elements</span> (ele3)
+            </div> (ele2)
+
+        </div> (ele1)
+    </body>
+
+
+    Step1:
+          const element1 = document.createElement("div")   ===>element1 = 1st div
+          const element2 = document.createElement("div")   ===>element2 = 2nd div
+          const element3 = document.createElement("span")  ===>element3 = 2nd div inside span tag
+
+    Step2:
+          element3.innerHTML = "This is a dynamic span tag"
+    
+    Step3:
+          element2.append(element3);          ===>element2 க்குள் element3 இருப்பதால் element3 ஐ append செய்கிறோம்.
+          element1.append(element2);          ===>element1 க்குள் element2 இருப்பதால் element2 ஐ append செய்கிறோம்.
+          document.body.append(element1);     ===>body க்குள் element1 இருப்பதால் element1 ஐ append செய்கிறோம்.
+
+            ***************************************************************** 
+
+Session Practice Task 2:Create and append two or more elements:
+ 
+
+    <header>
+        <section>
+            <span> this is span </span>
+        </section>
+        <article>
+            <p> this is paragraph</p>
+        </article>
+    </header>
+    <header>
+        <section>
+            <span> this is span </span>
+        </section>
+        <article>
+            <p> this is paragraph</p>
+        </article>
+    </header>
+
+       
+    Step1:
+          const element1 = document.createElement("header")     ===>element1 = header
+          const element2 = document.createElement("section")    ===>element2 = section
+          const element3 = document.createElement("span")       ===>element3 = span (inside section)
+          const element4 = document.createElement("article")    ===>element4 = article 
+          const element5 = document.createElement("paragraph")  ===>element5 = paragraph (inside article)
+
+    Step2:
+          element3.innerHTML = "This is a span";
+          element5.innerHTML = "This is a paragraph";
+
+    Step3:
+          element4.append(element5);          ===>element4 க்குள் element5 இருப்பதால் element4 ஐ append செய்கிறோம்.
+          element2.append(element3);          ===>element2 க்குள் element3 இருப்பதால் element2 ஐ append செய்கிறோம்.
+          element1.append(element2,element4); ===>element1 க்குள் element2,element4 இருப்பதால் element1 ஐ append செய்கிறோம்.    
+          document.body.append(element1);     ===>body க்குள் element1 இருப்பதால் element1 ஐ append செய்கிறோம்.
+
+*************************************************************************************************************************
+
+4.append vs appendChild
+
+Difference between append and appendChild
+
+===>இரண்டு அல்லது அதற்கு மேற்பட்ட parameter ஐ ஒரே சமயத்தில் append செய்ய முடியும்.
+    element1.append(element2,element4);
+
+    ஆனால் appendChildல் அவ்வாறு செய்ய முடியாது அதற்கு பதிலாக தனித்தனியாகத் தான் தர முடியும்.
+    element1.appendChild(element2);
+    element1.appendChild(element4);
+
+===>appendல் string ஐ பயன்படுத்தலாம்.
+   ஆனால் appendChild ல் string ஐ பயன்படுத்த முடியாது.
+   
+   element1.append("HELLO");
+   element1.appendChild("HELLO");  //Error
+
+*************************************************************************************************************************
+
+5.Setattributes:
+
+what is attributes?
+
+
+===>Attributes provide additional information about elements.
+    ஒரு tag க்கு உள்ளே இருக்கும் elements க்கு சில additional தேவைகள் இருப்பின் அதை attributes என்போம்.
+
+===>ஒரு tag அல்லது elments ஐ எப்படி எல்லாம் customize பண்ணலாம் என்பதற்கு பயன்படுத்துவது attributes ஆகும்.
+
+===>Example:
+
+    class=" " ; id=" " ; style=" " ;
+
+    <a href="https://instagram.in" target="_self">Click Here</a>
+
+    target="_self" என்பது attributes ஆகும்.
+
+===>setAttribute methods has 2 parameter
+    (1)attribute name    (2)attribute value
+
+===>Syntax:
+    variablename.setAttribute("attribute name" , "attribute value") 
+  
+
+===>Example:
+
+    Step1:
+          const element = document.createElement("div")
+    Step2:
+          element.setAttribute("class" , "container")
+    Step3:
+          a.innerHTML = "This is a setAttribute methods"
+    Step4:
+          document.body.append(element)
+
+    <body>
+        <div class="container">This is a setAttribute methods
+        </div>
+    </body>
+ 
+            ***************************************************************** 
+
+Session Practice Task 3:create an id for setAttribute methods
+
+    <body>
+        <div class="container" id="container">This is a setAttribute methods
+        </div>
+    </body>
+
+    Step1:
+          const att = document.createElement("div")
+    Step2:
+          att.setAttribute("class" , "container")
+          att.setAttribute("id" , "container")
+    Step3:
+          att.innerHTML = "This is a setAttribute methods"
+    Step4:
+          document.body.append(att);
+
+                ***************************************************************** 
+Session Practice Task 4:create element , append , setAttribute and css 
+
+    <div> bg dark
+    <header> bg lightcolors
+        <section> bg aqua
+            <span> this is span </span> color blueviolet
+        </section>
+        <article> bg red
+            <p> this is paragraph</p> black
+        </article>
+    </header>
+
+    <header>bg lightcolors
+        <section> bg red
+            <span> this is span </span> black
+        </section>
+        <article> bg aqua
+            <p> this is paragraph</p> blueviolet
+        </article>
+    </header>
+    </div>
+
+session task steps
+1.create elements
+2.create attributes
+3.innerHTML
+4.append
+5.styles using css
+
+
+    Step1:
+          const div     = document.createElement("div")        ===>div     = div
+          const header  = document.createElement("header")     ===>header  = header
+          const section = document.createElement("section")    ===>section = section
+          const span    = document.createElement("span")       ===>span    = span (inside section)
+          const article = document.createElement("article")    ===>article = article 
+          const para    = document.createElement("paragraph")  ===>para    = paragraph (inside article)
+
+          const div1     = document.createElement("div") 
+          const header1  = document.createElement("header") 
+          const section1 = document.createElement("section")
+          const span1    = document.createElement("span")
+          const article1 = document.createElement("article") 
+          const para1    = document.createElement("paragraph")
+
+    Step2:
+          div.setAttribute("class" , "divtask")
+          header.setAttribute("class" , "headertask")
+          section.setAttribute("class" , "sectiontask")
+          span.setAttribute("class" , "spantask")
+          article.setAttribute("class" , "articletask")
+          para.setAttribute("class" , "paratask")
+
+          header1.setAttribute("class" , "headertask1")
+          section1.setAttribute("class" , "sectiontask1")
+          span1.setAttribute("class" , "spantask1")
+          article1.setAttribute("class" , "articletask1")
+          para1.setAttribute("class" , "paratask1")
+
+    Step3:
+          span.innerHTML = "This is a span";
+          para.innerHTML = "This is a paragraph";
+          span1.innerHTML = "This is a span";
+          para1.innerHTML = "This is a paragraph";
+
+    Step4:
+          article.append(para);            ===>article க்குள் para இருப்பதால் article ஐ append செய்கிறோம்.
+          section.append(span);            ===>section க்குள் span இருப்பதால் section ஐ append செய்கிறோம்.
+          header.append(section,article);  ===>header க்குள் section,article இருப்பதால் header ஐ append செய்கிறோம்.    
+           
+          
+          article1.append(para1);
+          section1.append(span1);
+          header1.append(section1,article1); 
+          div.append(header,header1)        ===>header,header1 div க்குள் இருப்பதால் append செய்கிறோம்.
+          document.body.append(div);
+
+    Step5:
+
+        .divtask{
+            background-color:dark green;
+        }
+
+        .headertask{
+            background-color:light yellow;
+        }
+
+        .sectiontask{
+            background-color:aqua;
+        }
+
+        .spantask{
+            color:blueviolet;
+        }
+
+        .articletask{
+            background-color:red;
+        }
+
+        .paratask{
+            color:black;
+        }
+
+        .header1task{
+            background-color:light yellow;
+        }
+
+        .section1task{
+            background-color:red;
+        }
+
+        .span1task{
+            color:black;
+        }
+
+        .article1task{
+            background-color:aqua;
+        }
+
+        .para1task{
+            color:blueviolet;
+        } 
+
+*************************************************************************************************************************
